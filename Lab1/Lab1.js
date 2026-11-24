@@ -3,6 +3,19 @@
 const IDM_WORK1 = "IDM_WORK1";
 const IDM_WORK2 = "IDM_WORK2";
 
+const state = {
+    text: "",
+};
+
+function paint() {
+    const clientArea = document.getElementById("clientArea");
+    if (state.text === "") {
+        clientArea.textContent = "Оберіть пункт меню 'Робота1' або 'Робота2'";
+    } else {
+        clientArea.textContent = state.text;
+    }
+}
+
 function onCommand(commandId) {
   switch (commandId) {
     case IDM_WORK1:
@@ -22,6 +35,7 @@ function main() {
     const commandId = e.target.dataset.command;
     onCommand(commandId);
   });
+  paint();
 }
 
 main();
