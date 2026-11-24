@@ -21,7 +21,12 @@ function paint() {
 function onCommand(commandId) {
   switch (commandId) {
     case IDM_WORK1:
-      openModule1Dialog();
+      openModule1Dialog((group) => {
+        if (group !== null) {
+          state.text = group;
+          paint();
+        }
+      });
       break;
     case IDM_WORK2:
       console.log("Відкрити діалог Робота2");

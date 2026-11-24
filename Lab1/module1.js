@@ -19,8 +19,11 @@ const FIOT_GROUPS = [
 class GroupListDialog {
   #dialog;
   #list;
+  #result = null;
+  #onResult;
 
-  show() {
+  show(onResult) {
+    this.#onResult = onResult;
     this.#createWindow();
     this.#fillList();
     this.#bindEvents();
@@ -59,11 +62,16 @@ class GroupListDialog {
           break;
       }
     });
+
+    this.#dialog.addEventListener("close", () => {
+      this.#dialog.remove(); 
+      this.#onResult(this.#result); 
+    });
   }
 
   #onOk() {
     if (this.#list.selectedIndex < 0) return;
-    console.log(this.#list.value);
+    this.#result = this.#list.value;
     this.#dialog.close();
   }
 
@@ -72,6 +80,6 @@ class GroupListDialog {
   }
 }
 
-export function openModule1Dialog() {
-  new GroupListDialog().show();
+export function openModule1Dialog(onResult) {
+  new GroupListDialog().show(onResult);
 }
