@@ -7,16 +7,16 @@ const IDM_WORK1 = "IDM_WORK1";
 const IDM_WORK2 = "IDM_WORK2";
 
 const state = {
-    text: "",
+  text: "",
 };
 
 function paint() {
-    const clientArea = document.getElementById("clientArea");
-    if (state.text === "") {
-        clientArea.textContent = "Оберіть пункт меню 'Робота1' або 'Робота2'";
-    } else {
-        clientArea.textContent = state.text;
-    }
+  const clientArea = document.getElementById("clientArea");
+  if (state.text === "") {
+    clientArea.textContent = "Оберіть пункт меню 'Робота1' або 'Робота2'";
+  } else {
+    clientArea.textContent = state.text;
+  }
 }
 
 function onCommand(commandId) {
@@ -30,7 +30,12 @@ function onCommand(commandId) {
       });
       break;
     case IDM_WORK2:
-      openModule2Dialog();
+      openModule2Dialog((text) => {
+        if (text !== null) {
+          state.text = text;
+          paint();
+        }
+      });
       break;
     default:
       break;

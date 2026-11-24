@@ -3,8 +3,11 @@
 class TextInputDialog {
   #dialog;
   #input;
+  #result = null;
+  #onResult;
 
-  show() {
+  show(onResult) {
+    this.#onResult = onResult;
     this.#createWindow();
     this.#bindEvents();
     document.body.append(this.#dialog);
@@ -36,11 +39,15 @@ class TextInputDialog {
           break;
       }
     });
+    this.#dialog.addEventListener("close", () => {
+      this.#dialog.remove();
+      this.#onResult(this.#result);
+    });
   }
 
   #onOk() {
     if (this.#input.value.trim() === "") return;
-    console.log(this.#input.value.trim());
+    this.#result = this.#input.value.trim();
     this.#dialog.close();
   }
 
@@ -49,6 +56,6 @@ class TextInputDialog {
   }
 }
 
-export function openModule2Dialog() {
-  new TextInputDialog().show();
+export function openModule2Dialog(onResult) {
+  new TextInputDialog().show(onResult);
 }
