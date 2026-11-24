@@ -1,4 +1,4 @@
-// module1.js - Робота1, варіант В1 = 3: діалог зі списком груп
+// module1.js - Робота1, варіант B1 = 3: діалог зі списком груп
 
 import { setActiveDialog } from "./utils.js";
 
@@ -39,10 +39,10 @@ class GroupListDialog {
     this.#dialog.className = "dlg";
     this.#dialog.innerHTML = `
         <div class="dlg-title">Робота1 — вибір групи</div>
-            <select size="10"></select>
-            <div class="dlg-buttons">
-                <button data-id="ok">Так</button>
-                <button data-id="cancel">Відміна</button>
+        <select size="10"></select>
+        <div class="dlg-buttons">
+          <button data-id="ok">Так</button>
+          <button data-id="cancel">Відміна</button>
         </div>
     `;
     this.#list = this.#dialog.querySelector("select");
