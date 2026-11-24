@@ -1,5 +1,7 @@
 // Lab1.js - Головний файл програми
 
+import { openModule1Dialog } from "./module1.js";
+
 const IDM_WORK1 = "IDM_WORK1";
 const IDM_WORK2 = "IDM_WORK2";
 
@@ -19,7 +21,7 @@ function paint() {
 function onCommand(commandId) {
   switch (commandId) {
     case IDM_WORK1:
-      console.log("Відкрити діалог Робота1");
+      openModule1Dialog();
       break;
     case IDM_WORK2:
       console.log("Відкрити діалог Робота2");
