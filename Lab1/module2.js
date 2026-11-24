@@ -6,6 +6,7 @@ class TextInputDialog {
 
   show() {
     this.#createWindow();
+    this.#bindEvents();
     document.body.append(this.#dialog);
     this.#dialog.showModal();
   }
@@ -22,6 +23,29 @@ class TextInputDialog {
         </div>
     `;
     this.#input = this.#dialog.querySelector("input");
+  }
+
+  #bindEvents() {
+    this.#dialog.addEventListener("click", (e) => {
+      switch (e.target.dataset.id) {
+        case "ok":
+          this.#onOk();
+          break;
+        case "cancel":
+          this.#onCancel();
+          break;
+      }
+    });
+  }
+
+  #onOk() {
+    if (this.#input.value.trim() === "") return;
+    console.log(this.#input.value.trim());
+    this.#dialog.close();
+  }
+
+  #onCancel() {
+    this.#dialog.close();
   }
 }
 
