@@ -2,9 +2,26 @@
 
 class TextInputDialog {
   #dialog;
+  #input;
 
   show() {
-    console.log("module2: показую вікно");
+    this.#createWindow();
+    document.body.append(this.#dialog);
+    this.#dialog.showModal();
+  }
+
+  #createWindow() {
+    this.#dialog = document.createElement("dialog");
+    this.#dialog.className = "dlg";
+    this.#dialog.innerHTML = `
+        <div class="dlg-title">Робота2 — введення тексту</div>
+        <input type="text">
+        <div class="dlg-buttons">
+            <button data-id="ok">Так</button>
+            <button data-id="cancel">Відміна</button>
+        </div>
+    `;
+    this.#input = this.#dialog.querySelector("input");
   }
 }
 
