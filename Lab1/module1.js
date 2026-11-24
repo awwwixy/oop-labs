@@ -23,6 +23,7 @@ class GroupListDialog {
   show() {
     this.#createWindow();
     this.#fillList();
+    this.#bindEvents();
     document.body.append(this.#dialog);
     this.#dialog.showModal();
   }
@@ -45,6 +46,29 @@ class GroupListDialog {
     for (const group of FIOT_GROUPS) {
       this.#list.add(new Option(group));
     }
+  }
+
+  #bindEvents() {
+    this.#dialog.addEventListener("click", (e) => {
+      switch (e.target.dataset.id) {
+        case "ok":
+          this.#onOk();
+          break;
+        case "cancel":
+          this.#onCancel();
+          break;
+      }
+    });
+  }
+
+  #onOk() {
+    if (this.#list.selectedIndex < 0) return;
+    console.log(this.#list.value);
+    this.#dialog.close();
+  }
+
+  #onCancel() {
+    this.#dialog.close();
   }
 }
 
