@@ -1,6 +1,7 @@
 // Lab1.js - Головний файл програми
 
 import { openModule1Dialog } from "./module1.js";
+import { openModule2Dialog } from "./module2.js";
 
 const IDM_WORK1 = "IDM_WORK1";
 const IDM_WORK2 = "IDM_WORK2";
@@ -29,7 +30,7 @@ function onCommand(commandId) {
       });
       break;
     case IDM_WORK2:
-      console.log("Відкрити діалог Робота2");
+      openModule2Dialog();
       break;
     default:
       break;
