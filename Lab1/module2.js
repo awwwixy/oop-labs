@@ -1,5 +1,7 @@
 // module2.js - Робота2, варіант B2 = 0: діалог з полем вводу
 
+import { setActiveDialog } from "./utils.js";
+
 class TextInputDialog {
   #dialog;
   #input;
@@ -11,6 +13,7 @@ class TextInputDialog {
     this.#createWindow();
     this.#bindEvents();
     document.body.append(this.#dialog);
+    setActiveDialog(this.#dialog);
     this.#dialog.showModal();
   }
 

@@ -1,5 +1,7 @@
 // module1.js - Робота1, варіант В1 = 3: діалог зі списком груп
 
+import { setActiveDialog } from "./utils.js";
+
 const FIOT_GROUPS = [
   "ІМ-51",
   "ІМ-52",
@@ -28,6 +30,7 @@ class GroupListDialog {
     this.#fillList();
     this.#bindEvents();
     document.body.append(this.#dialog);
+    setActiveDialog(this.#dialog);
     this.#dialog.showModal();
   }
 
